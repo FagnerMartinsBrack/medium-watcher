@@ -20,5 +20,7 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 
   if (shouldNotify({ lastPostDate, nowDate })) {
     eventEmitter.emit('NEW_POST', lastPostDetails);
+  } else {
+    console.log('No new post detected');
   }
 }());
