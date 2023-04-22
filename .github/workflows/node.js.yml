@@ -10,6 +10,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      MEDIUM_FEED_URL: ${{secrets.MEDIUM_FEED_URL}}
+      LINKEDIN_ACCESS_TOKEN: ${{secrets.LINKEDIN_ACCESS_TOKEN}}
+      LINKEDIN_PERSON_ID: ${{secrets.LINKEDIN_PERSON_ID}}
+      TWITTER_CONSUMER_KEY: ${{secrets.TWITTER_CONSUMER_KEY}}
+      TWITTER_CONSUMER_SECRET: ${{secrets.TWITTER_CONSUMER_SECRET}}
+      TWITTER_ACCESS_TOKEN: ${{secrets.TWITTER_ACCESS_TOKEN}}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{secrets.TWITTER_ACCESS_TOKEN_SECRET}}
+
     strategy:
       matrix:
         node-version: [18.x]
@@ -27,5 +36,11 @@ jobs:
     - name: Run Notifications
       run: |
         touch .env
-        echo export MEDIUM_FEED_URL=https://fagnerbrack.com/feed >> .env
+        echo export MEDIUM_FEED_URL=${{ env.MEDIUM_FEED_URL }} >> .env
+        echo export LINKEDIN_ACCESS_TOKEN=${{ env.LINKEDIN_ACCESS_TOKEN }} >> .env
+        echo export LINKEDIN_PERSON_ID=${{ env.LINKEDIN_PERSON_ID }} >> .env
+        echo export TWITTER_CONSUMER_KEY=${{ env.TWITTER_CONSUMER_KEY }} >> .env
+        echo export TWITTER_CONSUMER_SECRET=${{ env.TWITTER_CONSUMER_SECRET }} >> .env
+        echo export TWITTER_ACCESS_TOKEN=${{ env.TWITTER_ACCESS_TOKEN }} >> .env
+        echo export TWITTER_ACCESS_TOKEN_SECRET=${{ env.TWITTER_ACCESS_TOKEN_SECRET }} >> .env
         npm run broadcast
