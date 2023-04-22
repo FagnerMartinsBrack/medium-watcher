@@ -3,7 +3,7 @@ name: Medium Post Broadcast
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *" # Every 1 hour
+    - cron: "30 * * * *" # Every 1 hour on the minute 30
 
 jobs:
   build:

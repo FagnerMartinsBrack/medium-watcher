@@ -1,16 +1,23 @@
 {
   "private": true,
   "scripts": {
-    "test": "mocha src/**/*.spec.js",
-    "broadcast": "node src/run"
+    "test": "mocha 'src/**/*.spec.js'",
+    "broadcast": "node src/run",
+    "dev": ". ./dev-environment.sh && node src/run",
+
+    "twitter:generate-access-token": ". ./dev-environment.sh && node src/twitter/generate-access-token.mjs",
+    "twitter:create-test-post": ". ./dev-environment.sh && node src/twitter/create-test-post.js",
+    "linkedin:create-test-post": ". ./dev-environment.sh && node src/linkedin/create-test-post.js"
   },
   "devDependencies": {
     "chai": "4.3.7",
     "mocha": "10.2.0"
   },
   "dependencies": {
+    "got": "12.6.0",
     "jsdom": "21.1.1",
-    "luxon": "3.3.0",
+    "luxon": "^3.3.0",
+    "oauth-1.0a": "^2.2.6",
     "rss-parser": "3.13.0"
   }
 }
