@@ -28,7 +28,7 @@ const shareOnLinkedIn = async ({ title, text, accessToken, thumbnailImageLink, t
 
 (async function () {
   if (!process.env.LINKEDIN_PERSON_ID) {
-    throw new Error('Could not find LINKEDIN_PERSON_ID env var, add your linkedin person id which is the last part of "urn:li:person:123456789"');
+    throw new Error('Could not find LINKEDIN_PERSON_ID env var, add your linkedin person id which is the "123456789" part of "urn:li:person:123456789"');
   }
   if (!process.env.LINKEDIN_ACCESS_TOKEN) {
     throw new Error('Could not find LINKEDIN_ACCESS_TOKEN env var, add your linkedin access token');
