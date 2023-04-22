@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "mocha src/**/*.spec.js",
+    "broadcast": "node src/run"
+  },
+  "devDependencies": {
+    "chai": "4.3.7",
+    "mocha": "10.2.0"
+  },
+  "dependencies": {
+    "jsdom": "21.1.1",
+    "luxon": "3.3.0",
+    "rss-parser": "3.13.0"
+  }
+}
