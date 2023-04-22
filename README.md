@@ -15,7 +15,7 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 
 ### How to use it
 
-Fork this project, add your own environment variables to Github Actions and to the `dev-environment.sh` hidden file to be able to run this locally:
+Fork this project, add your own environment variables to Github Actions Env Vars (https://github.com/you_user/your_project/settings/variables/actions) and to the `dev-environment.sh` hidden file to be able to run this locally:
 
 ```sh
 export MEDIUM_FEED_URL=https://fagnerbrack.com/feed
