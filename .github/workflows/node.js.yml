@@ -24,7 +24,8 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm test
-    - run: |
+    - name: Run Notifications
+      run: |
         touch .env
         echo export MEDIUM_FEED_URL=https://fagnerbrack.com/feed >> .env
         npm run broadcast
