@@ -68,9 +68,15 @@ Let me know if you have issues and please help improve the documentation by crea
 What it needs more work with:
 
 [ ] - Automate LinkedIn token refresh. Today it lasts 60 days after you run manually to get an access token and it doesn't refresh (which will make the token valid for a year)
+
 [ ] - Requires your Medium post to not be scheduled near the 30th minute of the CronJob. For example, it may not trigger notifications if the post is scheduled to be published at 08:30 and the CronJob runs at 09:30, given it may delay by up to 5 minutes to start and then it will be too late to consider the post as a new post.
+
 [ ] - Support pulling Medium feed in a variable cadence other than the static "every 1 hour"
+
 [ ] - Support more than one post published in an hour. Currently it only supports notifying one post every hour.
+
 [ ] - Differentiate posts from comments so to notify only posts. Is it possible?
+
 [ ] - Support more providers to notify other than Twitter and LinkedIn
+
 [ ] - Allow for a customised message on every provider. Right now the message is "I just published {post}".
