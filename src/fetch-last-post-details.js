@@ -4,6 +4,9 @@ const queryImgCoverLink = require('./post-details/query-cover-img-link');
 const parsePubDateToISO = require('./post-details/parse-pub-date-to-iso');
 
 const parseMediumFeed = async () => {
+  if (!process.env.MEDIUM_FEED_URL) {
+    throw new Error('Could not find MEDIUM_FEED_URL env var, add your medium feed like this: https://medium.com/@fagnerbrack/feed');
+  }
   const parser = new Parser();
   const feed = await parser.parseURL(process.env.MEDIUM_FEED_URL);
   return feed;

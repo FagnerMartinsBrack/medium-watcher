@@ -1,6 +1,14 @@
 const OAuth = require('oauth-1.0a');
 const crypto = require('crypto');
 
+
+if (!process.env.TWITTER_CONSUMER_KEY) {
+  throw new Error('Could not find TWITTER_CONSUMER_KEY env var, add your twitter consumer key');
+}
+if (!process.env.TWITTER_CONSUMER_SECRET) {
+  throw new Error('Could not find TWITTER_CONSUMER_SECRET env var, add your twitter consumer secret');
+}
+
 const oauth = OAuth({
   consumer: {
     key: process.env.TWITTER_CONSUMER_KEY,
@@ -13,6 +21,9 @@ const oauth = OAuth({
 async function createTweet({ text }) {
   const END_POINT_URL = `https://api.twitter.com/2/tweets`;
 
+
+  if (!process.env.TWITTER_ACCESS_TOKEN) throw new Error('Could not find TWITTER_ACCESS_TOKEN env var, add your twitter access token');
+  if (!process.env.TWITTER_ACCESS_TOKEN_SECRET) throw new Error('Could not find TWITTER_ACCESS_TOKEN_SECRET env var, add your twitter access token secret');
   const token = {
     key: process.env.TWITTER_ACCESS_TOKEN,
     secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
