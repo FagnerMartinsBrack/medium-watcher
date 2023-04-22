@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "test": "mocha 'src/**/*.spec.js'",
-    "broadcast": "node src/run",
+    "broadcast": ". ./dev-environment.sh && node src/run",
     "dev": ". ./dev-environment.sh && node src/run",
 
     "twitter:generate-access-token": ". ./dev-environment.sh && node src/twitter/generate-access-token.mjs",

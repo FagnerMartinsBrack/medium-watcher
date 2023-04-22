@@ -5,7 +5,7 @@ const parsePubDateToISO = require('./post-details/parse-pub-date-to-iso');
 
 const parseMediumFeed = async () => {
   const parser = new Parser();
-  const feed = await parser.parseURL('https://fagnerbrack.com/feed');
+  const feed = await parser.parseURL(process.env.MEDIUM_FEED_URL);
   return feed;
 };
 

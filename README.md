@@ -18,6 +18,8 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 Fork this project, add your own environment variables to Github Actions and to the `dev-environment.sh` hidden file to be able to run this locally:
 
 ```sh
+export MEDIUM_FEED_URL=https://fagnerbrack.com/feed
+
 export LINKEDIN_CLIENT_ID=
 export LINKEDIN_ACCESS_TOKEN=
 export LINKEDIN_PERSON_ID=
