@@ -1,4 +1,4 @@
-name: Post Broadcast
+name: Run App
 
 on:
   workflow_dispatch:
