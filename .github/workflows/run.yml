@@ -1,4 +1,4 @@
-name: Medium Post Broadcast
+name: Post Broadcast
 
 on:
   workflow_dispatch:
