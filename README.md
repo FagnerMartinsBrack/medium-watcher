@@ -15,7 +15,9 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 
 ### How to use it
 
-Fork this project, add your own environment variables to Github Actions Env Vars (https://github.com/you_user/your_project/settings/variables/actions) and to the `.env` hidden file to be able to run this locally:
+1. Fork this project
+2. Add your own environment variables to Github Actions (https://github.com/you_user/your_project/settings/variables/actions)
+3. Add the same variables to an `.env` file hidden in the root to be able to test the project locally:
 
 ```sh
 export MEDIUM_FEED_URL=https://fagnerbrack.com/feed
@@ -31,11 +33,9 @@ export TWITTER_ACCESS_TOKEN_SECRET=
 export TEST_MODE=true
 ```
 
-Wait for cron execution (which checks for a new post every hour) or run it manually:
+### Access Tokens
 
-```
-npm run broadcast
-```
+#### Twitter
 
 To generate a new Twitter Access Token, run:
 
@@ -45,11 +45,27 @@ npm run twitter:generate-access-token
 
 Follow the console prompts.
 
+#### LinkedIn
+
 To generate a LinkedIn Access Token, do it manually:
 
 https://www.linkedin.com/developers/tools/oauth?clientId={your_app_client_id}
 
-## Test Integration
+You have to create a company page with your name first.
+
+## Execution
+
+Wait for cron execution (which checks for a new post every hour) or run it manually locally.
+
+To run manually, write TEST_MODE=true in the `.env` file and run:
+
+```
+npm run broadcast
+```
+
+It will only execute the logging event handler.
+
+### Test Integration
 
 To test Twitter integration locally, run the following command:
 
