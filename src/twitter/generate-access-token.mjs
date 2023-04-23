@@ -1,34 +1,18 @@
 import got from 'got';
-import crypto from 'crypto';
-import OAuth from 'oauth-1.0a';
 import qs from 'querystring';
 import Readline from 'readline';
+
+import oauth from './twitter-oauth-singleton.js';
 
 const readline = Readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-
-// The code below sets the consumer key and consumer secret from your environment variables
-// To set environment variables on macOS or Linux, run the export commands below from the terminal:
-// export CONSUMER_KEY='YOUR-KEY'
-// export CONSUMER_SECRET='YOUR-SECRET'
-const consumer_key = process.env.TWITTER_CONSUMER_KEY;
-const consumer_secret = process.env.TWITTER_CONSUMER_SECRET;
-
 // this example uses PIN-based OAuth to authorize the user
 const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write';
 const authorizeURL = new URL('https://api.twitter.com/oauth/authorize');
 const accessTokenURL = 'https://api.twitter.com/oauth/access_token';
-const oauth = OAuth({
-  consumer: {
-    key: consumer_key,
-    secret: consumer_secret
-  },
-  signature_method: 'HMAC-SHA1',
-  hash_function: (baseString, key) => crypto.createHmac('sha1', key).update(baseString).digest('base64')
-});
 
 async function input(prompt) {
   return new Promise((resolve, reject) => {
