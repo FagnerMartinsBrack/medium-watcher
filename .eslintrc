@@ -1,0 +1,21 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "describe": "readonly",
+        "it": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022
+    },
+    "plugins": [
+        "mocha"
+    ],
+    "rules": {
+        "mocha/no-exclusive-tests": "error"
+    }
+}
