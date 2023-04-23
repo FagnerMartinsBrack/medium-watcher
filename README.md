@@ -1,6 +1,6 @@
 # MediumWatcher
 
-Use Github Actions to watch your Medium Feed and post to Twitter and LinkedIn without the need for a database
+Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter and LinkedIn without the need for a database
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
@@ -96,3 +96,4 @@ Improvements Required:
 - [ ] Support pulling Medium feed in a variable cadence other than the static "every 1 hour"
 - [ ] Support more than one post published in an hour. Currently it only supports notifying one post every hour.
 - [ ] Differentiate Medium posts from Medium comments so to notify only posts. Is it possible?
+- [ ] Make it platform-agnostic so it doesn't work only on Medium
