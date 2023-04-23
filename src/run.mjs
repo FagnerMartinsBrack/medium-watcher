@@ -17,9 +17,11 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 });
 
 import createLinkedInUpdate from './linkedin/create-linkedin-update.mjs';
-import withJustPublishedLinkedinMessage from './linkedin/with-just-published-linkedin-message.mjs';
+import createLinkedInMessage from './linkedin/create-linkedin-message.mjs';
+import categoriesToLinkedInTags from './linkedin/categories-to-linkedin-tags.mjs';
+const withLinkedInMessage = createLinkedInMessage(categoriesToLinkedInTags);
 eventEmitter.addListener('NEW_POST', (postDetails) => {
-  createLinkedInUpdate(withJustPublishedLinkedinMessage(postDetails));
+  createLinkedInUpdate(withLinkedInMessage(postDetails));
   console.log('✅ Executed LinkedIn post handler');
 });
 
