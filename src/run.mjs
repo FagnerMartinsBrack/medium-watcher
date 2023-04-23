@@ -10,9 +10,11 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 });
 
 import createTweet from './twitter/create-tweet.mjs';
-import withJustPublishedTwitterMessage from './twitter/with-just-published-twitter-message.mjs';
+import createTwitterMessage from './twitter/create-twitter-message.mjs';
+import categoriesToTwitterTags from './twitter/categories-to-twitter-tags.mjs';
+const withTwitterMessage = createTwitterMessage(categoriesToTwitterTags);
 eventEmitter.addListener('NEW_POST', (postDetails) => {
-  createTweet(withJustPublishedTwitterMessage(postDetails));
+  createTweet(withTwitterMessage(postDetails));
   console.log('✅ Executed twitter post handler');
 });
 
