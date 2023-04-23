@@ -62,10 +62,7 @@ async function requestToken() {
 }
 
 
-async function accessToken({
-  oauth_token,
-  oauth_token_secret
-}, verifier) {
+async function accessToken({ oauth_token }, verifier) {
   const authHeader = oauth.toHeader(oauth.authorize({
     url: accessTokenURL,
     method: 'POST'
