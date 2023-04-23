@@ -11,8 +11,10 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
   console.log('✅ Detected new post!', postDetails);
 });
 
-attachLinkedInListeners(eventEmitter);
-attachTwitterListeners(eventEmitter);
+if (!process.env.TEST_MODE) {
+  attachLinkedInListeners(eventEmitter);
+  attachTwitterListeners(eventEmitter);
+}
 
 (async function () {
   const lastPostDetails = await fetchLastPostDetails();
