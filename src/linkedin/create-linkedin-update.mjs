@@ -5,7 +5,7 @@ if (!process.env.LINKEDIN_ACCESS_TOKEN) {
   throw new Error('Could not find LINKEDIN_ACCESS_TOKEN env var, add your linkedin access token');
 }
 
-module.exports = async ({ title, text, thumbnailImageLink, thumbnailLink }) => {
+export default async ({ title, text, thumbnailImageLink, thumbnailLink }) => {
   const response = await fetch('https://api.linkedin.com/v2/shares', {
     method: 'POST',
     headers: {

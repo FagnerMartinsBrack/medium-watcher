@@ -1,6 +1,5 @@
-const expect = require('chai').expect;
-
-const shouldNotify = require('./should-notify');
+import { expect } from 'chai';
+import shouldNotify from './should-notify.mjs';
 
 describe('Should notify subscribers of a new post?', () => {
   it('DOES NOT notify if running many hours after the last post', () => {

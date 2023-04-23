@@ -1,5 +1,5 @@
-const createTweet = require('./create-tweet');
-const withJustPublishedTwitterMessage = require('./with-just-published-twitter-message');
+import createTweet from './create-tweet.mjs';
+import withJustPublishedTwitterMessage from './with-just-published-twitter-message.mjs';
 
 const testPostDetails = {
   title: 'Test title',

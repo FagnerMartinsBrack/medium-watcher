@@ -1,4 +1,4 @@
-module.exports = (postDetails) => {
+export default (postDetails) => {
   return {
     title: postDetails.title,
     text: [

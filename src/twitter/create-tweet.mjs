@@ -1,8 +1,7 @@
-const oauth = require('./twitter-oauth-singleton.js');
+import oauth from './twitter-oauth-singleton.mjs';
 
-module.exports = async ({ text }) => {
+export default async ({ text }) => {
   const END_POINT_URL = `https://api.twitter.com/2/tweets`;
-
 
   if (!process.env.TWITTER_ACCESS_TOKEN) throw new Error('Could not find TWITTER_ACCESS_TOKEN env var, add your twitter access token');
   if (!process.env.TWITTER_ACCESS_TOKEN_SECRET) throw new Error('Could not find TWITTER_ACCESS_TOKEN_SECRET env var, add your twitter access token secret');

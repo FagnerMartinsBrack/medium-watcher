@@ -1,5 +1,5 @@
-const createLinkedInUpdate = require('./create-linkedin-update');
-const withJustPublishedLinkedInMessage = require('./with-just-published-linkedin-message');
+import createLinkedInUpdate from './create-linkedin-update.mjs';
+import withJustPublishedLinkedInMessage from './with-just-published-linkedin-message.mjs';
 
 const postDetails = {
   title: 'A LinkedIn Test' + +new Date(),

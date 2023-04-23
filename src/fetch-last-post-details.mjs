@@ -1,7 +1,7 @@
-const Parser = require('rss-parser');
-const querySubtitle = require('./post-details/query-subtitle');
-const queryImgCoverLink = require('./post-details/query-cover-img-link');
-const parsePubDateToISO = require('./post-details/parse-pub-date-to-iso');
+import Parser from 'rss-parser';
+import querySubtitle from './post-details/query-subtitle.mjs';
+import queryImgCoverLink from './post-details/query-cover-img-link.mjs';
+import parsePubDateToISO from './post-details/parse-pub-date-to-iso.mjs';
 
 const parseMediumFeed = async () => {
   if (!process.env.MEDIUM_FEED_URL) {
@@ -28,7 +28,7 @@ const findLastPostDetails = (feed) => {
   return parseFeedItem(feed.items[0]);
 };
 
-module.exports = async () => {
+export default async () => {
   const feed = await parseMediumFeed();
   const lastPost = findLastPostDetails(feed);
   return lastPost;

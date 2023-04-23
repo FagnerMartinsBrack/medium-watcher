@@ -1,8 +1,8 @@
-const JSDOM = require('jsdom').JSDOM;
+import { JSDOM } from 'jsdom';
 
 const parseHTML = (html) => new JSDOM(html).window.document;
 
-module.exports = (html) => {
+export default (html) => {
   const coverImageElement = parseHTML(html).querySelectorAll('img')[0];
   if (!coverImageElement) throw new Error('No cover image found');
   return coverImageElement.getAttribute('src');

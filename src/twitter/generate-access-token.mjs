@@ -2,7 +2,7 @@ import got from 'got';
 import qs from 'querystring';
 import Readline from 'readline';
 
-import oauth from './twitter-oauth-singleton.js';
+import oauth from './twitter-oauth-singleton.mjs';
 
 const readline = Readline.createInterface({
   input: process.stdin,

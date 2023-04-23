@@ -1,4 +1,4 @@
-module.exports = (postDetails) => ({
+export default (postDetails) => ({
   text: [
     `I just published ${postDetails.title} ${postDetails.subtitle}`,
     `${postDetails.url}`,

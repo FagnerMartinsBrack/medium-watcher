@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const queryCoverImgLink = require('./query-cover-img-link');
+import { expect } from 'chai';
+import queryCoverImgLink from './query-cover-img-link.mjs';
 
 it('queries cover image link', async () => {
   expect(

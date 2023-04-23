@@ -1,17 +1,17 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "eslint '**/*.js' && mocha 'src/**/*.spec.js'",
-    "broadcast": ". ./.env && node src/run",
-    "dev": ". ./.env && node src/run",
+    "broadcast": ". ./.env && node src/run.mjs",
     "twitter:generate-access-token": ". ./.env && node src/twitter/generate-access-token.mjs",
     "twitter:create-test-post": ". ./.env && node src/twitter/create-test-post.js",
     "linkedin:create-test-post": ". ./.env && node src/linkedin/create-test-post.js"
   },
   "devDependencies": {
     "chai": "4.3.7",
-    "eslint": "^8.39.0",
-    "eslint-plugin-mocha": "^10.1.0",
+    "eslint": "8.39.0",
+    "eslint-plugin-mocha": "10.1.0",
     "mocha": "10.2.0"
   },
   "dependencies": {

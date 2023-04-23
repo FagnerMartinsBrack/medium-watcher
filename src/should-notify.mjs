@@ -1,6 +1,6 @@
-const { DateTime } = require('luxon');
+import { DateTime } from 'luxon';
 
-module.exports = ({ lastPostDate, nowDate }) => {
+export default ({ lastPostDate, nowDate }) => {
   // It checks if a post has been introduced in the last hour
   // The workflow runs every 60 minutes closer to the minute 0 of the our (CronJob "0 * * * *" # Every 1 hour)
   // We make it configurable and read from node.js.yml to get the period it's running but I didn't have time to do that

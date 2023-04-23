@@ -1,23 +1,23 @@
-const { DateTime } = require('luxon');
-const fetchLastPostDetails = require('./fetch-last-post-details');
-const shouldNotify = require('./should-notify');
+import { DateTime } from 'luxon';
+import fetchLastPostDetails from './fetch-last-post-details.mjs';
+import shouldNotify from './should-notify.mjs';
 
-const EventEmitter = require('events');
+import EventEmitter from 'events';
+
 const eventEmitter = new EventEmitter();
-
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   console.log('✅ Detected new post!', postDetails);
 });
 
-const createTweet = require('./twitter/create-tweet');
-const withJustPublishedTwitterMessage = require('./twitter/with-just-published-twitter-message');
+import createTweet from './twitter/create-tweet.mjs';
+import withJustPublishedTwitterMessage from './twitter/with-just-published-twitter-message.mjs';
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   createTweet(withJustPublishedTwitterMessage(postDetails));
   console.log('✅ Executed twitter post handler');
 });
 
-const createLinkedInUpdate = require('./linkedin/create-linkedin-update');
-const withJustPublishedLinkedinMessage = require('./linkedin/with-just-published-linkedin-message');
+import createLinkedInUpdate from './linkedin/create-linkedin-update.mjs';
+import withJustPublishedLinkedinMessage from './linkedin/with-just-published-linkedin-message.mjs';
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   createLinkedInUpdate(withJustPublishedLinkedinMessage(postDetails));
   console.log('✅ Executed LinkedIn post handler');
