@@ -1,5 +1,6 @@
 # MediumWatcher
-## Use Github Actions to watch your Medium Feed and post to Twitter and LinkedIn without the need for a database
+
+Use Github Actions to watch your Medium Feed and post to Twitter and LinkedIn without the need for a database
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
@@ -12,6 +13,9 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
   sendToNewProvider(postDetails);
 });
 ```
+
+If you implement a new provider, add each provider in its own folder and create a PR which I'll gladly accept.
+Just make sure you create one folder per provider and don't share functions across them to keep their code independent and loosely coupled to each other.
 
 ### How to use it
 
