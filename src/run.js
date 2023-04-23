@@ -1,8 +1,6 @@
 const { DateTime } = require('luxon');
 const fetchLastPostDetails = require('./fetch-last-post-details');
 const shouldNotify = require('./should-notify');
-const createTweet = require('./twitter/create-tweet');
-const withJustPublishedTwitterMessage = require('./twitter/with-just-published-twitter-message');
 
 const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
@@ -11,11 +9,17 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
   console.log('Detected new post!', postDetails);
 });
 
+const createTweet = require('./twitter/create-tweet');
+const withJustPublishedTwitterMessage = require('./twitter/with-just-published-twitter-message');
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   createTweet(withJustPublishedTwitterMessage(postDetails));
 });
 
-// TODO: Integrate listener for Linkedin
+const createLinkedInUpdate = require('./linkedin/create-linkedin-update');
+const withJustPublishedLinkedinMessage = require('./linkedin/with-just-published-linkedin-message');
+eventEmitter.addListener('NEW_POST', (postDetails) => {
+  createLinkedInUpdate(withJustPublishedLinkedinMessage(postDetails));
+});
 
 (async function () {
   const lastPostDetails = await fetchLastPostDetails();
