@@ -6,19 +6,21 @@ const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 
 eventEmitter.addListener('NEW_POST', (postDetails) => {
-  console.log('Detected new post!', postDetails);
+  console.log('✅ Detected new post!', postDetails);
 });
 
 const createTweet = require('./twitter/create-tweet');
 const withJustPublishedTwitterMessage = require('./twitter/with-just-published-twitter-message');
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   createTweet(withJustPublishedTwitterMessage(postDetails));
+  console.log('✅ Executed twitter post handler');
 });
 
 const createLinkedInUpdate = require('./linkedin/create-linkedin-update');
 const withJustPublishedLinkedinMessage = require('./linkedin/with-just-published-linkedin-message');
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   createLinkedInUpdate(withJustPublishedLinkedinMessage(postDetails));
+  console.log('✅ Executed LinkedIn post handler');
 });
 
 (async function () {
@@ -30,6 +32,6 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
   if (shouldNotify({ lastPostDate, nowDate })) {
     eventEmitter.emit('NEW_POST', lastPostDetails);
   } else {
-    console.log('No new post detected');
+    console.log('⛔️ No new post detected');
   }
 }());
