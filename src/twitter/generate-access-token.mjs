@@ -31,11 +31,15 @@ const oauth = OAuth({
 });
 
 async function input(prompt) {
-  return new Promise(async (resolve, reject) => {
-    readline.question(prompt, (out) => {
-      readline.close();
-      resolve(out);
-    });
+  return new Promise((resolve, reject) => {
+    try {
+      readline.question(prompt, (out) => {
+        readline.close();
+        resolve(out);
+      });
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
