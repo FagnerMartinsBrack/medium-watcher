@@ -14,7 +14,7 @@ describe('Create Twitter message', () => {
       categories: ['software-engineering', 'webdev']
     };
     expect(withTwitterMessage(postDetails)).to.eql({
-      text: "I just published Any Title Any Subtitle\n\nhttps://www.example.com/content.html\n\n#softwareengineering #webdev"
+      text: `I just published "Any Title Any Subtitle"\n\nhttps://www.example.com/content.html\n\n#softwareengineering #webdev`
     });
   });
 });

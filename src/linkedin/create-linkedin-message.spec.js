@@ -14,7 +14,7 @@ describe('Create LinkedIn message', () => {
       categories: ['software-engineering', 'webdev']
     };
     expect(withLinkedInMessage(postDetails)).to.eql({
-      text: "I just published Any Title Any Subtitle\n\nhttps://www.example.com/content.html\n\n#softwareengineering #webdev",
+      text: `I just published "Any Title Any Subtitle"\n\nhttps://www.example.com/content.html\n\n#softwareengineering #webdev`,
       thumbnailImageLink: "https://example.com/img.jpg",
       thumbnailLink: "https://www.example.com/content.html",
       title: "Any Title",
