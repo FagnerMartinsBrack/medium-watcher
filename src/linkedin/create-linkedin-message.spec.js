@@ -20,4 +20,22 @@ describe('Create LinkedIn message', () => {
       title: "Any Title",
     });
   });
+
+  it('creates a LinkedIn message with title w/o subtitle', () => {
+    const withLinkedInMessage = createLinkedInMessage(categoriesToLinkedInTags);
+
+    const postDetails = {
+      title: 'Any Title',
+      subtitle: '',
+      coverLink: 'https://example.com/img.jpg',
+      url: 'https://www.example.com/content.html',
+      categories: ['software-engineering', 'webdev']
+    };
+    expect(withLinkedInMessage(postDetails)).to.eql({
+      text: `I just published "Any Title"\n\nhttps://www.example.com/content.html\n\n#softwareengineering #webdev`,
+      thumbnailImageLink: "https://example.com/img.jpg",
+      thumbnailLink: "https://www.example.com/content.html",
+      title: "Any Title",
+    });
+  });
 });

@@ -1,7 +1,13 @@
-export default (createTags) => (postDetails) => ({
-  text: [
-    `I just published "${postDetails.title} ${postDetails.subtitle}"`,
-    `${postDetails.url}`,
-    createTags(postDetails.categories)
-  ].join('\n\n')
-});
+export default (createTags) => (postDetails) => {
+  const postComponents = [postDetails.title];
+  if (postDetails.subtitle) {
+    postComponents.push(postDetails.subtitle);
+  }
+  return {
+    text: [
+      `I just published "${postComponents.join(' ')}"`,
+      `${postDetails.url}`,
+      createTags(postDetails.categories)
+    ].join('\n\n')
+  };
+};
