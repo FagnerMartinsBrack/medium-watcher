@@ -16,7 +16,7 @@ const parseFeedItem = (feedItem) => {
   return {
     title: feedItem.title,
     subtitle: querySubtitle(feedItem['content:encoded']),
-    tags: feedItem.categories,
+    categories: feedItem.categories,
     date: parsePubDateToISO(feedItem.pubDate),
     link: feedItem.link,
     coverLink: queryImgCoverLink(feedItem['content:encoded'])
