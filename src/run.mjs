@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import fetchLastPostDetails from './fetch-last-post-details.mjs';
+import fetchPostDetails from './fetch-post-details.mjs';
 import shouldNotify from './should-notify.mjs';
 
 import EventEmitter from 'events';
@@ -17,7 +17,7 @@ if (!process.env.TEST_MODE) {
 }
 
 (async function () {
-  const lastPostDetails = await fetchLastPostDetails();
+  const lastPostDetails = await fetchPostDetails();
 
   const lastPostDate = DateTime.fromISO(lastPostDetails.date, { zone: 'utc' });
   const nowDate = DateTime.fromISO(new Date().toISOString(), { zone: 'utc' });
