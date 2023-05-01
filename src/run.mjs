@@ -3,8 +3,8 @@ import fetchPostDetails from './fetch-post-details.mjs';
 import shouldNotify from './should-notify.mjs';
 
 import EventEmitter from 'events';
-import attachLinkedInListeners from './linkedin/attach-linkedin-listeners.mjs';
-import attachTwitterListeners from './twitter/attach-twitter-listeners.mjs';
+import attachLinkedInListeners from './listeners/linkedin/attach-linkedin-listeners.mjs';
+import attachTwitterListeners from './listeners/twitter/attach-twitter-listeners.mjs';
 
 const eventEmitter = new EventEmitter();
 eventEmitter.addListener('NEW_POST', (postDetails) => {
