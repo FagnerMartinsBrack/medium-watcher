@@ -26,7 +26,7 @@ Just make sure you create one folder per provider and don't share functions acro
 **Example of local `.env` file:**
 
 ```sh
-export MEDIUM_FEED_URL=https://fagnerbrack.com/feed
+export MEDIUM_FEED_URL=https://medium.com/@fagnerbrack/feed
 
 export LINKEDIN_CLIENT_ID=???
 export LINKEDIN_ACCESS_TOKEN=???
