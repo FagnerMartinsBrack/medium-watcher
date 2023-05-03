@@ -27,4 +27,4 @@ The `NEW_POST` event is emitted when a new post is found in the feed. The callba
 **categories**: An `ArrayLiteral` representing the post categories/tags
 **date**: The date the post was published in ISO format
 **url**: The URL of the post
-**coverLink**: The URL of the post cover image (which parsed as the first `img` element of the content)
+**coverUrl**: The URL of the post cover image (which parsed as the first `img` element of the content)

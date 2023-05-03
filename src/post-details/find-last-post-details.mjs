@@ -1,5 +1,5 @@
 import querySubtitle from './query-subtitle.mjs';
-import queryImgCoverLink from './query-cover-img-link.mjs';
+import queryImgCoverUrl from './query-cover-img-url.mjs';
 import parsePubDateToISO from './parse-pub-date-to-iso.mjs';
 
 const parseFeedItem = (feedItem) => {
@@ -9,7 +9,7 @@ const parseFeedItem = (feedItem) => {
     categories: feedItem.categories,
     date: parsePubDateToISO(feedItem.pubDate),
     url: feedItem.link,
-    coverLink: queryImgCoverLink(feedItem['content:encoded'])
+    coverUrl: queryImgCoverUrl(feedItem['content:encoded'])
   };
 };
 

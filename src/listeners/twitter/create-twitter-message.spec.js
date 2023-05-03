@@ -9,7 +9,7 @@ describe('Create Twitter message', () => {
     const postDetails = {
       title: 'Any Title',
       subtitle: 'Any Subtitle',
-      coverLink: 'https://example.com/img.jpg',
+      coverUrl: 'https://example.com/img.jpg',
       url: 'https://www.example.com/content.html',
       categories: ['software-engineering', 'webdev']
     };
@@ -24,7 +24,7 @@ describe('Create Twitter message', () => {
     const postDetails = {
       title: 'Any Title',
       subtitle: '',
-      coverLink: 'https://example.com/img.jpg',
+      coverUrl: 'https://example.com/img.jpg',
       url: 'https://www.example.com/content.html',
       categories: ['software-engineering', 'webdev']
     };

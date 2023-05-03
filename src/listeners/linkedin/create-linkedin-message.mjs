@@ -10,7 +10,7 @@ export default (createTags) => (postDetails) => {
       postDetails.url,
       createTags(postDetails.categories)
     ].join('\n\n'),
-    thumbnailImageLink: postDetails.coverLink,
+    thumbnailImageLink: postDetails.coverUrl,
     thumbnailLink: postDetails.url,
   };
 };
