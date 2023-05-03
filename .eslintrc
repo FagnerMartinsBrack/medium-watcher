@@ -7,7 +7,8 @@
     "extends": "eslint:recommended",
     "globals": {
         "describe": "readonly",
-        "it": "readonly"
+        "it": "readonly",
+        "afterEach": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": 2022,

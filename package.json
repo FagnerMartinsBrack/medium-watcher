@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "eslint '**/*.js' && mocha 'src/**/*.spec.js'",
+    "test": ". ./.env && eslint '**/*.js' && mocha 'src/**/*.spec.js'",
     "broadcast": ". ./.env && node src/run.mjs",
     "twitter:generate-access-token": ". ./.env && node src/listeners/twitter/generate-access-token.mjs",
     "twitter:create-test-post": ". ./.env && node src/listeners/twitter/create-test-post.js",
@@ -15,6 +15,7 @@
     "mocha": "10.2.0"
   },
   "dependencies": {
+    "app-root-path": "3.1.0",
     "got": "12.6.0",
     "jsdom": "21.1.1",
     "luxon": "3.3.0",

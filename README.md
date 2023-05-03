@@ -4,7 +4,7 @@ Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
-It uses an InMemory EventBus with EventEmitter which you can use to subscribe other providers to the medium post events.
+It uses an InMemory EventBus with EventEmitter which you can use to subscribe other providers to the "NEW_POST" event.
 
 You can add more providers by creating a new listener:
 
