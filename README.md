@@ -4,18 +4,17 @@ Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
-It uses an InMemory EventBus with EventEmitter which you can use to subscribe other providers to the "NEW_POST" event.
+It uses an In Memory EventBus with EventEmitter which you can use to subscribe Notification Targets to the "NEW_POST" event.
 
-You can add more providers by creating a new listener:
+You can add more notification targets by creating a new listener:
 
 ```javascript
 eventEmitter.addListener('NEW_POST', (postDetails) => {
-  sendToNewProvider(postDetails);
+  sendToNewTarget(postDetails);
 });
 ```
 
-If you implement a new provider, add each provider in its own folder and create a PR which I'll gladly accept.
-Just make sure you create one folder per provider and don't share functions across them to keep their code independent and loosely coupled to each other.
+If you implement a new Notification Target, follow the docs.
 
 ### How to use it
 
