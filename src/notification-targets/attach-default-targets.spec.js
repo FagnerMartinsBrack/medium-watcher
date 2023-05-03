@@ -18,7 +18,7 @@ describe('Failing to attach non-standard targets', () => {
       await attachDefaultTargets(new EventEmitter(), { fetchTargets: () => ['test-target'] });
       expect.fail('Should have thrown an error');
     } catch(e) {
-      expect(e).to.eql(new Error(`Cannot find module './test-target/attach-listeners.mjs'`));
+      expect(e).to.eql(new Error(`Cannot find 'attach-listeners.mjs' file for target 'test-target'`));
       expect(e.cause.code).to.eql('ERR_MODULE_NOT_FOUND');
     }
   });

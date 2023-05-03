@@ -1,11 +1,11 @@
-if (!process.env.LINKEDIN_PERSON_ID) {
-  throw new Error('Could not find LINKEDIN_PERSON_ID env var, add your linkedin person id which is the "123456789" part of "urn:li:person:123456789"');
-}
-if (!process.env.LINKEDIN_ACCESS_TOKEN) {
-  throw new Error('Could not find LINKEDIN_ACCESS_TOKEN env var, add your linkedin access token');
-}
-
 export default async ({ title, text, thumbnailImageLink, thumbnailLink }) => {
+  if (!process.env.LINKEDIN_PERSON_ID) {
+    throw new Error('Could not find LINKEDIN_PERSON_ID env var, add your linkedin person id which is the "123456789" part of "urn:li:person:123456789"');
+  }
+  if (!process.env.LINKEDIN_ACCESS_TOKEN) {
+    throw new Error('Could not find LINKEDIN_ACCESS_TOKEN env var, add your linkedin access token');
+  }
+
   const response = await fetch('https://api.linkedin.com/v2/shares', {
     method: 'POST',
     headers: {

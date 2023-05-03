@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": ". ./.env && eslint '**/*.js' && mocha 'src/**/*.spec.js'",
+    "test": "eslint '**/*.js' && mocha 'src/**/*.spec.js'",
     "broadcast": ". ./.env && node src/run.mjs",
     "twitter:generate-access-token": ". ./.env && node src/notification-targets/twitter/generate-access-token.mjs",
     "twitter:create-test-post": ". ./.env && node src/notification-targets/twitter/create-test-post.js",

@@ -2,7 +2,7 @@ import got from 'got';
 import qs from 'querystring';
 import Readline from 'readline';
 
-import oauth from './twitter-oauth-singleton.mjs';
+import createOauth from './create-twitter-oauth.mjs';
 
 const readline = Readline.createInterface({
   input: process.stdin,
@@ -28,6 +28,7 @@ async function input(prompt) {
 }
 
 async function requestToken() {
+  const oauth = createOauth();
   const authHeader = oauth.toHeader(oauth.authorize({
     url: requestTokenURL,
     method: 'POST'
@@ -47,6 +48,7 @@ async function requestToken() {
 
 
 async function accessToken({ oauth_token }, verifier) {
+  const oauth = createOauth();
   const authHeader = oauth.toHeader(oauth.authorize({
     url: accessTokenURL,
     method: 'POST'

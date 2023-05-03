@@ -12,11 +12,15 @@ const fetchDefaultTargets = () => {
 export default async (eventEmitter, { fetchTargets = fetchDefaultTargets } = {}) => {
   const defaultTargets = fetchTargets();
   for (const targetName of defaultTargets) {
+    const moduleLookup = `${root}/src/notification-targets/${targetName}/attach-listeners.mjs`;
     try {
-      const targetModule = await import(`${root}/src/notification-targets/${targetName}/attach-listeners.mjs`);
+      const targetModule = await import(moduleLookup);
       targetModule.default(eventEmitter);
     } catch(e) {
-      throw new Error(`Cannot find module './${targetName}/attach-listeners.mjs'`, { cause: e });
+      if (e.code === 'ERR_MODULE_NOT_FOUND') {
+        throw new Error(`Cannot find 'attach-listeners.mjs' file for target '${targetName}'`, { cause: e });
+      }
+      throw e;
     }
   }
 };

@@ -1,4 +1,4 @@
-import oauth from './twitter-oauth-singleton.mjs';
+import createOauth from './create-twitter-oauth.mjs';
 
 export default async ({ text }) => {
   const END_POINT_URL = `https://api.twitter.com/2/tweets`;
@@ -9,6 +9,7 @@ export default async ({ text }) => {
     key: process.env.TWITTER_ACCESS_TOKEN,
     secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   };
+  const oauth = createOauth();
 
   const authHeader = oauth.toHeader(oauth.authorize({
     url: END_POINT_URL,
