@@ -3,7 +3,7 @@ import fetchPostDetails from './fetch-post-details.mjs';
 import shouldNotify from './should-notify.mjs';
 
 import EventEmitter from 'events';
-import attachDefaultListeners from './listeners/attach-default-listeners.mjs';
+import attachDefaultTargets from './notification-targets/attach-default-targets.mjs';
 
 const eventEmitter = new EventEmitter();
 eventEmitter.addListener('NEW_POST', (postDetails) => {
@@ -12,7 +12,7 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 
 (async function () {
   if (!process.env.TEST_MODE) {
-    await attachDefaultListeners(eventEmitter);
+    await attachDefaultTargets(eventEmitter);
   }
 
   const lastPostDetails = await fetchPostDetails();

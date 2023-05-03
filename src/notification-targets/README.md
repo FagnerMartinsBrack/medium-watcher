@@ -1,20 +1,20 @@
-## Listeners
+## Notification Targets
 
-A folder containing all supported listeners
+A folder containing all supported notification targets
 
-### How to add a new standard listener
+### How to add a new Notification Target
 
-To add a new listener, create a new folder with the name of the listener and a file called `attach-listeners.mjs` which is the entry point that exports a function using ES Module `export default` syntax. The function accepts the singleton `EventEmitter` instance.
+To add a new target, create a new folder with the name of the target and a file called `attach-listeners.mjs` which is the entry point that exports a function using ES Module `export default` syntax. The function accepts the singleton `EventEmitter` instance.
 
 ```javascript
 export default (eventEmitter) => {
   eventEmitter.addListener('NEW_POST', (postDetails) => {
-    sendToNewListener(postDetails);
+    sendToNewTarget(postDetails);
   });
 };
 ```
 
-**Note:** Make sure you create one folder per listener and don't share functions across them to keep their code independent and loosely coupled to each other.
+**Note:** Make sure you create one folder per target and don't share functions across them to keep their code independent and loosely coupled to each other.
 
 ### Events
 

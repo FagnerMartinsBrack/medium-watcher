@@ -4,7 +4,7 @@ Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
-It uses an In Memory EventBus with EventEmitter which you can use to subscribe Notification Targets to the "NEW_POST" event.
+It uses an In Memory Event Emitter which you can use to subscribe Notification Targets to the "NEW_POST" event.
 
 You can add more notification targets by creating a new listener:
 
@@ -14,7 +14,7 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 });
 ```
 
-If you implement a new Notification Target, follow the docs.
+If you implement a new Notification Target, follow the docs [here](src/notification-targets/README.md).
 
 ### How to use it
 
