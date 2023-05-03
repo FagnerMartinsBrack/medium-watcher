@@ -24,9 +24,9 @@ The `NEW_POST` event is emitted when a new post is found in the feed. The callba
 
 ##### Properties
 
-**title**: The title of the post
-**subtitle**: The subtitle of the post (which is parsed as the first `h4` element of the content)
-**categories**: An `ArrayLiteral` representing the post categories/tags
-**date**: The date the post was published in ISO format
-**url**: The URL of the post
-**coverUrl**: The URL of the post cover image (which parsed as the first `img` element of the content)
+**title**: The title of the post.<br>
+**subtitle**: The subtitle of the post (which is parsed as the first `h4` element of the content).<br>
+**categories**: An `ArrayLiteral` representing the post categories/tags.<br>
+**date**: The date the post was published in ISO format.<br>
+**url**: The URL of the post.<br>
+**coverUrl**: The URL of the post cover image (which parsed as the first `img` element of the content).<br>
