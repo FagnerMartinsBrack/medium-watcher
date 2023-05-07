@@ -6,7 +6,7 @@ describe('Fetching Enabled Targets', () => {
   it('no target available, no config', () => {
     const fromMemorySource = () => [];
     const fetchFromStaticSource = fetchTargets(fromMemorySource);
-    expect(fetchFromStaticSource()).to.eql([]);
+    expect(fetchFromStaticSource().enabledTargets).to.eql([]);
   });
 
   it('targets available, enabled by config', () => {
@@ -14,12 +14,12 @@ describe('Fetching Enabled Targets', () => {
     const fetchFromStaticSource = fetchTargets(fromMemorySource, {
       enabledTargets: ['email'],
     });
-    expect(fetchFromStaticSource()).to.eql(['email']);
+    expect(fetchFromStaticSource().enabledTargets).to.eql(['email']);
   });
 
   it('targets available, no config', () => {
     const fromMemorySource = () => ['email', 'twitter'];
     const fetchFromStaticSource = fetchTargets(fromMemorySource);
-    expect(fetchFromStaticSource()).to.eql(['email', 'twitter']);
+    expect(fetchFromStaticSource().enabledTargets).to.eql(['email', 'twitter']);
   });
 });

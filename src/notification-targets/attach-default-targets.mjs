@@ -1,8 +1,8 @@
 import root from 'app-root-path';
 
 export default async (eventEmitter, { fetch } = {}) => {
-  const targets = fetch();
-  for (const targetName of targets) {
+  const executionPlan = fetch();
+  for (const targetName of executionPlan.enabledTargets) {
     const moduleLookup = `${root}/src/notification-targets/${targetName}/attach-listeners.mjs`;
     try {
       const targetModule = await import(moduleLookup);

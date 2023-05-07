@@ -27,7 +27,8 @@ describe('Attaching Targets', () => {
   describe(`Failing to attach target that doesn't exist`, () => {
     it(`fails when trying to attach a target that doesn't have its own folder`, async () => {
       try {
-        await attachDefaultTargets(new EventEmitter(), { fetch: () => ['test-target'] });
+        const fromStatic = () => ['test-target'];
+        await attachDefaultTargets(new EventEmitter(), { fetch: fetchTargets(fromStatic) });
         expect.fail('Should have thrown an error');
       } catch(e) {
         expect(e).to.eql(new Error(`Cannot find 'attach-listeners.mjs' file for target 'test-target'`));
@@ -39,8 +40,25 @@ describe('Attaching Targets', () => {
   describe('Successfully attaching targets', () => {
     beforeEach(() => { createEmptyTarget({ name: 'test-target' }); });
     it(`succeeds to attach a target`, async () => {
-      await attachDefaultTargets(new EventEmitter(), { fetch: () => ['test-target'] });
+      const fromStatic = () => ['test-target'];
+      await attachDefaultTargets(new EventEmitter(), { fetch: fetchTargets(fromStatic) });
     });
     afterEach(() => { removeTarget({ name: 'test-target' }) });
+  });
+
+  describe.skip('Emits a TARGET_NOT_EXECUTED event when a target is not executed along with reasons', () => {
+    it(`succeeds to attach a target`, (done) => {
+      const eventEmitter = new EventEmitter();
+      eventEmitter.addListener('TARGET_NOT_EXECUTED', (params) => {
+        expect(params.names).to.eql('twitter');
+        done();
+      });
+      const fromStatic = () => ['twitter', 'linkedin'];
+      attachDefaultTargets(eventEmitter, {
+        fetch: fetchTargets(fromStatic, {
+          enabledTargets: ['twitter']
+        })
+      });
+    });
   });
 });
