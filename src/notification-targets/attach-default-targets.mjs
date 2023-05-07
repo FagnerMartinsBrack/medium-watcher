@@ -4,7 +4,7 @@ export default async (eventEmitter, { fetch } = {}) => {
   try {
     const executionPlan = fetch();
     for (const target of executionPlan.disabledTargets) {
-      eventEmitter.emit('TARGET_NOT_EXECUTED', { name: target.name, reason: 'Target is disabled' });
+      eventEmitter.emit('TARGET_NOT_EXECUTED', { name: target.name, reason: target.reason });
     }
     for (const target of executionPlan.enabledTargets) {
       const moduleLookup = `${root}/src/notification-targets/${target.name}/attach-listeners.mjs`;
