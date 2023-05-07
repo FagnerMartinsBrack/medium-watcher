@@ -6,6 +6,7 @@ import EventEmitter from 'events';
 import attachDefaultTargets from './notification-targets/attach-default-targets.mjs';
 import fetchTargets from './notification-targets/fetch-targets.mjs';
 import fromFileSystemSource from './notification-targets/from-file-system-source.mjs';
+import toEnabledTargets from './notification-targets/to-enabled-targets.mjs';
 
 const eventEmitter = new EventEmitter();
 eventEmitter.addListener('NEW_POST', (postDetails) => {
@@ -15,7 +16,9 @@ eventEmitter.addListener('NEW_POST', (postDetails) => {
 (async function () {
   if (!process.env.TEST_MODE) {
     await attachDefaultTargets(eventEmitter, {
-      fetch: fetchTargets(fromFileSystemSource)
+      fetch: fetchTargets(fromFileSystemSource, {
+        enabledTargets: toEnabledTargets(process.env)
+      })
     });
   }
 
