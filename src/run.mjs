@@ -12,6 +12,12 @@ const eventEmitter = new EventEmitter();
 eventEmitter.addListener('NEW_POST', (postDetails) => {
   console.log('✅ Detected new post!', postDetails);
 });
+eventEmitter.addListener('TARGET_NOT_EXECUTED', (params) => {
+  console.warn(`🚦 Target "${params.name}" was not executed: "${params.reason}". Enable using ENABLED_TARGETS env var.`);
+});
+eventEmitter.addListener('ERROR', (e) => {
+  console.error('❌ Error occurred', e);
+});
 
 (async function () {
   if (!process.env.TEST_MODE) {
