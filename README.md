@@ -27,16 +27,26 @@ If you implement a new Notification Target, follow the docs [here](src/notificat
 ```sh
 export MEDIUM_FEED_URL=https://medium.com/@fagnerbrack/feed
 
-export LINKEDIN_CLIENT_ID=???
-export LINKEDIN_ACCESS_TOKEN=???
-export LINKEDIN_PERSON_ID=???
+# Linkedin
+export LINKEDIN_CLIENT_ID=
+export LINKEDIN_ACCESS_TOKEN=
+export LINKEDIN_PERSON_ID=
 
-export TWITTER_CONSUMER_KEY=???
-export TWITTER_CONSUMER_SECRET=???
-export TWITTER_ACCESS_TOKEN=???
-export TWITTER_ACCESS_TOKEN_SECRET=???
-export ENABLED_TARGETS=twitter,linkedin
-export TEST_MODE=true
+# Twitter
+export TWITTER_CONSUMER_KEY=
+export TWITTER_CONSUMER_SECRET=
+export TWITTER_ACCESS_TOKEN=
+export TWITTER_ACCESS_TOKEN_SECRET=
+
+# Email
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_REGION= # e.g ap-southeast-2
+export EMAIL_FROM= # e.g user@example.com
+export EMAIL_RECIPIENTS= # e.g user@example.com,otheruser@example.com
+
+export ENABLED_TARGETS= # e.g twitter,linkedin,email | no value = enable all available targets
+export TEST_MODE=true # ignores the target execution and logs a warning instead
 ```
 
 ### Access Tokens
@@ -58,6 +68,12 @@ To generate a LinkedIn Access Token, do it manually:
 https://www.linkedin.com/developers/tools/oauth?clientId={your_app_client_id}
 
 You have to create a company page with your name first.
+
+#### Email (SES)
+
+For email, we use SES. You can use any other email provider by extending the `sendEmail()` function and the environment vars.
+
+To create an AWS access key, follow the docs: https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys
 
 ## Execution
 

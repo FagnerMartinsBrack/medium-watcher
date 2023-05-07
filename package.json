@@ -6,7 +6,8 @@
     "broadcast": ". ./.env && node src/run.mjs",
     "twitter:generate-access-token": ". ./.env && node src/notification-targets/twitter/generate-access-token.mjs",
     "twitter:create-test-post": ". ./.env && node src/notification-targets/twitter/create-test-post.js",
-    "linkedin:create-test-post": ". ./.env && node src/notification-targets/linkedin/create-test-post.js"
+    "linkedin:create-test-post": ". ./.env && node src/notification-targets/linkedin/create-test-post.js",
+    "email:create-test-post": ". ./.env && node src/notification-targets/email/create-test-post.js"
   },
   "devDependencies": {
     "chai": "4.3.7",
@@ -16,6 +17,7 @@
   },
   "dependencies": {
     "app-root-path": "3.1.0",
+    "aws-sdk": "2.1373.0",
     "got": "12.6.0",
     "jsdom": "21.1.1",
     "luxon": "3.3.0",
