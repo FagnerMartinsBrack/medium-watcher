@@ -1,21 +1,8 @@
-import fs from 'fs';
-import path from 'path';
 import root from 'app-root-path';
 
-const allTargetsFromFileSystemSource = () => {
-  return fs
-    .readdirSync(path.join(root.toString(), 'src', 'notification-targets'), { withFileTypes: true })
-    .filter(dirEntry => dirEntry.isDirectory())
-    .map(directory => directory.name);
-};
-
-const fetchDefaultTargets = (allTargetsFromSource = allTargetsFromFileSystemSource) => {
-  return allTargetsFromSource();
-};
-
-export default async (eventEmitter, { fetchTargets = fetchDefaultTargets } = {}) => {
-  const defaultTargets = fetchTargets();
-  for (const targetName of defaultTargets) {
+export default async (eventEmitter, { fetch } = {}) => {
+  const targets = fetch();
+  for (const targetName of targets) {
     const moduleLookup = `${root}/src/notification-targets/${targetName}/attach-listeners.mjs`;
     try {
       const targetModule = await import(moduleLookup);

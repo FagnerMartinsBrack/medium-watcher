@@ -5,6 +5,8 @@ import path from 'path';
 import root from 'app-root-path';
 
 import attachDefaultTargets from './attach-default-targets.mjs';
+import fetchTargets from './fetch-targets.mjs';
+import fromFileSystemSource from './from-file-system-source.mjs';
 
 const createEmptyTarget = ({ name }) => {
   fs.mkdirSync(path.join(root.toString(), 'src', 'notification-targets', name));
@@ -18,14 +20,14 @@ const removeTarget = ({ name }) => {
 describe('Attaching Targets', () => {
   describe('Attach Standard Targets', () => {
     it(`succeeds to attach all standard targets without errors`, async () => {
-      await attachDefaultTargets(new EventEmitter());
+      await attachDefaultTargets(new EventEmitter(), { fetch: fetchTargets(fromFileSystemSource) });
     });
   });
 
   describe(`Failing to attach target that doesn't exist`, () => {
     it(`fails when trying to attach a target that doesn't have its own folder`, async () => {
       try {
-        await attachDefaultTargets(new EventEmitter(), { fetchTargets: () => ['test-target'] });
+        await attachDefaultTargets(new EventEmitter(), { fetch: () => ['test-target'] });
         expect.fail('Should have thrown an error');
       } catch(e) {
         expect(e).to.eql(new Error(`Cannot find 'attach-listeners.mjs' file for target 'test-target'`));
@@ -37,7 +39,7 @@ describe('Attaching Targets', () => {
   describe('Successfully attaching targets', () => {
     beforeEach(() => { createEmptyTarget({ name: 'test-target' }); });
     it(`succeeds to attach a target`, async () => {
-      await attachDefaultTargets(new EventEmitter(), { fetchTargets: () => ['test-target'] });
+      await attachDefaultTargets(new EventEmitter(), { fetch: () => ['test-target'] });
     });
     afterEach(() => { removeTarget({ name: 'test-target' }) });
   });
