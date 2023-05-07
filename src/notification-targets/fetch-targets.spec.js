@@ -2,11 +2,12 @@ import { expect } from 'chai';
 
 import fetchTargets from './fetch-targets.mjs';
 
-describe('Fetching Enabled Targets', () => {
+describe('Fetching Targets Execution Plan', () => {
   it('no target available, no config', () => {
     const fromMemorySource = () => [];
     const fetchFromStaticSource = fetchTargets(fromMemorySource);
     expect(fetchFromStaticSource().enabledTargets).to.eql([]);
+    expect(fetchFromStaticSource().disabledTargets).to.eql([]);
   });
 
   it('targets available, enabled by config', () => {
@@ -15,11 +16,13 @@ describe('Fetching Enabled Targets', () => {
       enabledTargets: ['email'],
     });
     expect(fetchFromStaticSource().enabledTargets).to.eql(['email']);
+    expect(fetchFromStaticSource().disabledTargets).to.eql(['twitter']);
   });
 
   it('targets available, no config', () => {
     const fromMemorySource = () => ['email', 'twitter'];
     const fetchFromStaticSource = fetchTargets(fromMemorySource);
     expect(fetchFromStaticSource().enabledTargets).to.eql(['email', 'twitter']);
+    expect(fetchFromStaticSource().disabledTargets).to.eql([]);
   });
 });
