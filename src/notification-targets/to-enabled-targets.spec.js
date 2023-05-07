@@ -37,4 +37,9 @@ describe('Convert ENABLED_TARGETS env var to enabled targets config', () => {
     };
     expect(toEnabledTargets(envVars)).to.eql(['twitter']);
   });
+
+  it('does not error out when ENABLED_TARGETS is not set', () => {
+    const envVars = {};
+    expect(toEnabledTargets(envVars)).to.eql([]);
+  });
 });
