@@ -15,14 +15,14 @@ describe('Fetching Targets Execution Plan', () => {
     const fetchFromStaticSource = fetchTargets(fromMemorySource, {
       enabledTargets: ['email'],
     });
-    expect(fetchFromStaticSource().enabledTargets).to.eql(['email']);
-    expect(fetchFromStaticSource().disabledTargets).to.eql(['twitter']);
+    expect(fetchFromStaticSource().enabledTargets).to.eql([{ name: 'email' }]);
+    expect(fetchFromStaticSource().disabledTargets).to.eql([{ name: 'twitter' }]);
   });
 
   it('targets available, no config', () => {
     const fromMemorySource = () => ['email', 'twitter'];
     const fetchFromStaticSource = fetchTargets(fromMemorySource);
-    expect(fetchFromStaticSource().enabledTargets).to.eql(['email', 'twitter']);
+    expect(fetchFromStaticSource().enabledTargets).to.eql([{ name: 'email' }, { name: 'twitter' }]);
     expect(fetchFromStaticSource().disabledTargets).to.eql([]);
   });
 });
