@@ -20,13 +20,12 @@ eventEmitter.addListener('ERROR', (e) => {
 });
 
 (async function () {
-  if (!process.env.TEST_MODE) {
-    await attachDefaultTargets(eventEmitter, {
-      fetch: fetchTargets(fromFileSystemSource, {
-        enabledTargets: toEnabledTargets(process.env)
-      })
-    });
-  }
+  await attachDefaultTargets(eventEmitter, {
+    fetch: fetchTargets(fromFileSystemSource, {
+      enabledTargets: toEnabledTargets(process.env),
+      testMode: process.env.TEST_MODE === 'true'
+    })
+  });
 
   const lastPostDetails = await fetchPostDetails();
 

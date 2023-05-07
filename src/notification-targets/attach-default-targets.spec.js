@@ -47,7 +47,7 @@ describe('Attaching Targets', () => {
   });
 
   describe('Emits a TARGET_NOT_EXECUTED event when a target is not executed along with reasons', () => {
-    it(`succeeds to attach a target`, (done) => {
+    it(`emits the event`, (done) => {
       const eventEmitter = new EventEmitter();
       eventEmitter.addListener('ERROR', e => done(e)); // Make sure errors are not swallowed
 
@@ -56,11 +56,31 @@ describe('Attaching Targets', () => {
         expect(params.reason).to.eql('Target is disabled');
         done();
       });
-      const fromStatic = () => ['twitter', 'linkedin'];
 
+      const fromStatic = () => ['twitter', 'linkedin']
       attachDefaultTargets(eventEmitter, {
         fetch: fetchTargets(fromStatic, {
           enabledTargets: ['twitter']
+        })
+      });
+    });
+  });
+
+  describe('Emits a TARGET_NOT_EXECUTED when when in test mode with reasons', () => {
+    it(`emits the event`, (done) => {
+      const eventEmitter = new EventEmitter();
+      eventEmitter.addListener('ERROR', e => done(e)); // Make sure errors are not swallowed
+
+      eventEmitter.addListener('TARGET_NOT_EXECUTED', (params) => {
+        expect(params.name).to.eql('twitter');
+        done();
+      });
+
+      const fromStatic = () => ['twitter'];
+      attachDefaultTargets(eventEmitter, {
+        fetch: fetchTargets(fromStatic, {
+          enabledTargets: ['twitter'],
+          testMode: true
         })
       });
     });
