@@ -1,6 +1,6 @@
-# MWatcher - Notify LinkedIn/Twitter from Medium RSS Feed (hostless)
+# MWatcher - Notify LinkedIn/Twitter/Email from Medium RSS Feed (hostless)
 
-Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter and LinkedIn (no database)
+Use Github Actions to watch your RSS Feed (tested on Medium) and post to Twitter, LinkedIn and Email (no database)
 
 Check the runs here: https://github.com/FagnerMartinsBrack/medium-watcher/actions
 
