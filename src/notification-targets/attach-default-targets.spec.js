@@ -73,6 +73,7 @@ describe('Attaching Targets', () => {
 
       eventEmitter.addListener('TARGET_NOT_EXECUTED', (params) => {
         expect(params.name).to.eql('twitter');
+        expect(params.reason).to.eql('You are in test mode.');
         done();
       });
 

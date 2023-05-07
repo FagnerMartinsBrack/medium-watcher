@@ -4,7 +4,7 @@ export default (fromSource, { enabledTargets = [], testMode = false } = {}) => (
   }));
 
   if (testMode === true) {
-    return { enabledTargets: [], disabledTargets: allTargets }
+    return { enabledTargets: [], disabledTargets: allTargets.map(target => ({ ...target, reason: 'You are in test mode.' })) }
   }
 
   if (enabledTargets.length > 0) {
