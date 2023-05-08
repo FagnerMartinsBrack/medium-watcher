@@ -18,6 +18,11 @@ jobs:
       TWITTER_CONSUMER_SECRET: ${{secrets.TWITTER_CONSUMER_SECRET}}
       TWITTER_ACCESS_TOKEN: ${{secrets.TWITTER_ACCESS_TOKEN}}
       TWITTER_ACCESS_TOKEN_SECRET: ${{secrets.TWITTER_ACCESS_TOKEN_SECRET}}
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      AWS_REGION: ${{secrets.AWS_REGION}}
+      EMAIL_FROM: ${{secrets.EMAIL_FROM}}
+      EMAIL_RECIPIENTS: ${{secrets.EMAIL_RECIPIENTS}}
 
     strategy:
       matrix:
@@ -43,4 +48,9 @@ jobs:
         echo export TWITTER_CONSUMER_SECRET=${{ env.TWITTER_CONSUMER_SECRET }} >> .env
         echo export TWITTER_ACCESS_TOKEN=${{ env.TWITTER_ACCESS_TOKEN }} >> .env
         echo export TWITTER_ACCESS_TOKEN_SECRET=${{ env.TWITTER_ACCESS_TOKEN_SECRET }} >> .env
+        echo export AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} >> .env
+        echo export AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} >> .env
+        echo export AWS_REGION=${{env.AWS_REGION}} >> .env
+        echo export EMAIL_FROM=${{env.EMAIL_FROM}} >> .env
+        echo export EMAIL_RECIPIENTS=${{env.EMAIL_RECIPIENTS}} >> .env
         npm run broadcast
