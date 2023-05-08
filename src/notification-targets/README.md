@@ -4,7 +4,7 @@ A folder containing all supported notification targets
 
 ### How to add a new Notification Target
 
-Here's an example commit that I used to implement the `email` Notification Target: https://github.com/FagnerMartinsBrack/medium-watcher/commit/306a3448d64adbf81f44d42b0fd6c53db05d9269
+Here's an example of a commit range that I used to implement the `email` Notification Target: https://github.com/FagnerMartinsBrack/medium-watcher/compare/f88114b8579c728a0fdecc4ace7b653e45996792...f5df7269f9465eba8d4b8a2328720c1d384abaef
 
 To add a new target, create a new folder with the name of the target and a file called `attach-listeners.mjs` which is the entry point that exports a function using ES Module `export default` syntax. The function accepts the singleton `EventEmitter` instance.
 
