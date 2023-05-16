@@ -59,7 +59,7 @@ export TEST_MODE=true
 # Optional
 # Default: no replacement
 # Format: "target,replacement" or replace "this,that"
-export REPLACE_FEED_ITEM_LINK_DOMAIN=fagnerbrack.medium.com,fagnerbrack.com.
+export REPLACE_FEED_ITEM_LINK_DOMAIN=fagnerbrack.medium.com,fagnerbrack.com
 ```
 
 ### Access Tokens
