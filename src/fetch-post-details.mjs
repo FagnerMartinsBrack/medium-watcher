@@ -13,6 +13,10 @@ const parseMediumFeed = async () => {
 
 export default async () => {
   const feed = await parseMediumFeed();
-  const lastPost = findLastPostDetails(feed);
+
+  const config = {
+    replace_feed_item_link_domain: process.env.REPLACE_FEED_ITEM_LINK_DOMAIN,
+  };
+  const lastPost = findLastPostDetails(feed, config);
   return lastPost;
 };

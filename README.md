@@ -45,6 +45,7 @@ export AWS_REGION= # e.g ap-southeast-2
 export EMAIL_FROM= # e.g user@example.com
 export EMAIL_RECIPIENTS= # e.g user@example.com,otheruser@example.com
 
+export REPLACE_FEED_ITEM_LINK_DOMAIN=fagnerbrack.medium.com,fagnerbrack.com # optional, good for SEO on Medium that doesn't add your domain to the feed item link
 export ENABLED_TARGETS= # e.g twitter,linkedin,email | no value = enable all available targets
 export TEST_MODE=true # ignores the target execution and logs a warning instead
 ```
