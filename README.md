@@ -25,7 +25,7 @@ If you implement a new Notification Target, follow the docs [here](src/notificat
 **Example of local `.env` file:**
 
 ```sh
-export MEDIUM_FEED_URL=https://medium.com/@fagnerbrack/feed
+export MEDIUM_FEED_URL= # e.g https://medium.com/@fagnerbrack/feed
 
 # Linkedin
 export LINKEDIN_CLIENT_ID=
@@ -45,9 +45,21 @@ export AWS_REGION= # e.g ap-southeast-2
 export EMAIL_FROM= # e.g user@example.com
 export EMAIL_RECIPIENTS= # e.g user@example.com,otheruser@example.com
 
-export REPLACE_FEED_ITEM_LINK_DOMAIN=fagnerbrack.medium.com,fagnerbrack.com # optional, good for SEO on Medium that doesn't add your domain to the feed item link
-export ENABLED_TARGETS= # e.g twitter,linkedin,email | no value = enable all available targets
-export TEST_MODE=true # ignores the target execution and logs a warning instead
+# Comma separated list of targets to enable
+# Optional
+# Default: Enable all notification targets
+export ENABLED_TARGETS=twitter,linkedin,email
+
+# Ignores execution of all targets and logs a warning instead
+# Optional
+# Default: false
+export TEST_MODE=true
+
+# Replaces feed link component. Good for SEO on Medium as they don't add your registered domain to the feed item link
+# Optional
+# Default: no replacement
+# Format: "target,replacement" or replace "this,that"
+export REPLACE_FEED_ITEM_LINK_DOMAIN=fagnerbrack.medium.com,fagnerbrack.com.
 ```
 
 ### Access Tokens
