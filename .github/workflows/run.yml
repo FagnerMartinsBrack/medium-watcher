@@ -23,6 +23,7 @@ jobs:
       AWS_REGION: ${{secrets.AWS_REGION}}
       EMAIL_FROM: ${{secrets.EMAIL_FROM}}
       EMAIL_RECIPIENTS: ${{secrets.EMAIL_RECIPIENTS}}
+      REPLACE_FEED_ITEM_LINK_DOMAIN: ${{secrets.REPLACE_FEED_ITEM_LINK_DOMAIN}}
 
     strategy:
       matrix:
@@ -53,4 +54,5 @@ jobs:
         echo export AWS_REGION=${{env.AWS_REGION}} >> .env
         echo export EMAIL_FROM=${{env.EMAIL_FROM}} >> .env
         echo export EMAIL_RECIPIENTS=${{env.EMAIL_RECIPIENTS}} >> .env
+        echo export REPLACE_FEED_ITEM_LINK_DOMAIN=${{env.REPLACE_FEED_ITEM_LINK_DOMAIN}} >> .env
         npm run broadcast
