@@ -24,6 +24,7 @@ jobs:
       EMAIL_FROM: ${{secrets.EMAIL_FROM}}
       EMAIL_RECIPIENTS: ${{secrets.EMAIL_RECIPIENTS}}
       REPLACE_FEED_ITEM_LINK_DOMAIN: ${{secrets.REPLACE_FEED_ITEM_LINK_DOMAIN}}
+      ENABLED_TARGETS: ${{secrets.ENABLED_TARGETS}}
 
     strategy:
       matrix:
@@ -55,4 +56,5 @@ jobs:
         echo export EMAIL_FROM=${{env.EMAIL_FROM}} >> .env
         echo export EMAIL_RECIPIENTS=${{env.EMAIL_RECIPIENTS}} >> .env
         echo export REPLACE_FEED_ITEM_LINK_DOMAIN=${{env.REPLACE_FEED_ITEM_LINK_DOMAIN}} >> .env
+        echo export ENABLED_TARGETS=${{env.ENABLED_TARGETS}} >> .env
         npm run broadcast
