@@ -3,7 +3,7 @@ name: Run App
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 * * * *" # Every 1 hour on the minute 30
+    - cron: "30 */2 * * *" # At minute 30 past every 2nd hour
 
 jobs:
   build:
